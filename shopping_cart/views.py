@@ -8,6 +8,8 @@ from shopping.models import Product
 
 from .models import Cart, CartItem
 
+# TODO: IMPLEMENT CART FOR ANONYMOUS USER
+
 
 class CartListView(View):
     def get(self, request):

@@ -6,15 +6,22 @@ from django.views import View
 
 from shopping.models import Product
 
-from .models import Cart, CartItem
-
-# TODO: IMPLEMENT CART FOR ANONYMOUS USER
+from .models import Cart, CartItem, UserProxy
+from .utils import user_check
 
 
 class CartListView(View):
     def get(self, request):
-        current_user = request.user
-        cart = Cart.objects.get_or_create(user=current_user)[0]
+        userId = user_check(request)
+
+        if request.user.is_anonymous:
+            currentUser = UserProxy.objects.get_or_create(cookie=userId)[0]
+            print("USER NOT LOGGED IN: " + str(currentUser.cookie))
+        else:
+            currentUser = UserProxy.objects.get_or_create(user=userId)[0]
+            print("USER LOGGED IN: " + str(currentUser.user.username))
+
+        cart = Cart.objects.get_or_create(user=currentUser)[0]
         cartItems = CartItem.objects.filter(cart=cart).order_by("product__name")
         order_total = sum([(item.product.price * item.quantity) for item in cartItems])
 
@@ -34,10 +41,18 @@ class CartUpdateView(View):
         print("Action", action)
         print("ProductId", productId)
 
-        current_user = request.user
+        userId = user_check(request)
+
+        if request.user.is_anonymous:
+            currentUser = UserProxy.objects.get_or_create(cookie=userId)[0]
+            print("USER NOT LOGGED IN: " + str(currentUser.cookie))
+        else:
+            currentUser = UserProxy.objects.get_or_create(user=userId)[0]
+            print("USER LOGGED IN: " + str(currentUser.user.username))
+
         product = Product.objects.get(id=productId)
 
-        cart = Cart.objects.get_or_create(user=current_user)
+        cart = Cart.objects.get_or_create(user=currentUser)
 
         cartItem = CartItem.objects.get_or_create(cart=cart[0], product=product)[0]
 

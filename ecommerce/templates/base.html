@@ -147,7 +147,7 @@
     {% csrf_token %}
     <script>
     var user = "{{ request.user }}";
-    var cookieValue = "{{ use_CookieValue }}";
+    var cookieValue = "{{ CookieValue }}";
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     </script>
     {% endblock inline_javascript %}

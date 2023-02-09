@@ -12,11 +12,14 @@ function getCookie(name){
 
     return null;
 }
-var cart = JSON.parse(getCookie('cart'));
-console.log('Cart:', cart)
 
-if (cart == undefined){
-    cart = {}
-    console.log('Cart Created!', cart)
-    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
+var user = JSON.parse(getCookie('user'));
+console.log('Cart:', user)
+
+if (user == undefined){
+    user = cookieValue
+    console.log('Cart Created!', user)
+    var expireTime = (new Date(Date.now()+ 24*7*60*60*1000)).toUTCString();
+    document.cookie = 'user=' + JSON.stringify(cookieValue) +";expires=" + expireTime + ";domain=;path=/"
 }

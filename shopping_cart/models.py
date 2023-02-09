@@ -1,12 +1,18 @@
-from django.conf import settings
 from django.db import models
 
+from ecommerce.users.models import User
 from shopping.models import Product
+
+
+class UserProxy(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    cookie = models.CharField(null=True, max_length=36)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Cart(models.Model):
     user = models.OneToOneField(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user_cart"
+        UserProxy, on_delete=models.CASCADE, related_name="user_cart"
     )
     created_at = models.DateTimeField(auto_now_add=True)
 

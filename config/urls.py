@@ -23,6 +23,11 @@ urlpatterns = [
     path("categories/", CategoryListView.as_view(), name="items"),
     path("cart/", CartListView.as_view(), name="cart"),
     path("update-item/", CartUpdateView.as_view(), name="update_item"),
+    path(
+        "cart/checkout/",
+        TemplateView.as_view(template_name="pages/checkout.html"),
+        name="checkout",
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

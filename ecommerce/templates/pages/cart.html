@@ -9,12 +9,10 @@
           <div class="card">
             <div class="card-body p-4">
               <div class="row">
-
                 <div class="col-lg-7">
                   <h2 class="mb-3"><a class="text-body"><i
                         class="fas fa-long-arrow-alt-left me-2"></i>Shopping Cart</a></h2>
                   <hr>
-
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
                       <p class="mb-0">You have {{ cart_quantity }} items in your cart</p>
@@ -75,12 +73,76 @@
                       <p class="mb-2">${{ order_total|add:"20" }}</p>
                     </div>
 
-                    <button type="button" class="btn btn-outline-dark btn-lg">
-                      <div>
-                        <a>Checkout</a>
-                      </div>
-                    </button>
 
+                  </div>
+                <div class="col-lg-5">
+                  <h2 class="mb-3"><a class="text-body"><i
+                        class="fas fa-long-arrow-alt-left me-2"></i>Address</a></h2>
+                  <hr>
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Address details</h5>
+                      </div>
+
+
+
+                      <form class="mt-4">
+                        <div class="row mb-4">
+                          <div class="col-md-6">
+                            <div class="form-outline form-white ">
+                              <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                                placeholder="First Name" />
+                              <label class="form-label" for="typeName">First Name</label>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-outline form-white ">
+                              <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                                placeholder="Last Name" />
+                              <label class="form-label" for="typeName">Last Name</label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-outline form-white mb-4">
+                          <input type="text" id="typeText" class="form-control form-control-lg" size="17"
+                            placeholder="Address"/>
+                          <label class="form-label" for="typeText">Home Address</label>
+                        </div>
+                        <div class="row mb-4">
+                          <div class="col-md-6">
+                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioLabel1v"
+                             value="" aria-label="..." />
+                            <label class="form-check-label" for="radioLabel1v">
+                              Credit
+                            </label>
+                            </div>
+                          </div>
+
+                          <div class="col-md-6">
+                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioLabel2v"
+                             value="" aria-label="..." />
+
+                            <label class="form-check-label" for="radioLabel2v">
+                              Cash
+                            </label>
+                          </div>
+                      </form>
+                      <hr>
+                      <button type="button" class="btn btn-outline-dark btn-lg">
+                        <div>
+                          <a>Checkout</a>
+                        </div>
+                      </button>
+                  </div>
+
+
+
+                  </div>
+                </div>
+              </div>
                 </section>
+
 
 {% endblock content %}

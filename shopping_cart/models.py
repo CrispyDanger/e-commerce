@@ -9,6 +9,12 @@ class UserProxy(models.Model):
     cookie = models.CharField(null=True, max_length=36)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self) -> str:
+        if self.user is None:
+            return self.cookie
+        else:
+            return self.user.username
+
 
 class Cart(models.Model):
     user = models.OneToOneField(
@@ -22,6 +28,9 @@ class CartItem(models.Model):
     quantity = models.IntegerField(default=0)
     cart = models.ForeignKey("Cart", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.product.slug
 
     @property
     def total(self):

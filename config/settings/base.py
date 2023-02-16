@@ -76,6 +76,7 @@ LOCAL_APPS = [
     "ecommerce.users",
     "shopping",
     "shopping_cart",
+    "order",
     # Your stuff: custom apps go here
 ]
 

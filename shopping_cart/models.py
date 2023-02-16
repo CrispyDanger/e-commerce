@@ -36,11 +36,5 @@ class CartItem(models.Model):
     def total(self):
         return self.product.price * self.quantity
 
-    # @property
-    # def subtotal(self):
-    #     order = self.product.all()
-    #     total = sum([item.price for item in order])
-    #     return total
-
 
 # Create your models here.

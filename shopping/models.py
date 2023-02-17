@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db import models
 
 
@@ -26,17 +25,16 @@ class Product(models.Model):
         return self.name
 
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="profile"
-    )
-    address_one = models.CharField(max_length=30)
-    address_two = models.CharField(max_length=30)
-    city = models.CharField(max_length=10)
-    phonenumber = models.SmallIntegerField()
+# class UserProfile(models.Model):
+#     user = models.OneToOneField(
+#         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="profile"
+#     )
+#     address = models.CharField(max_length=30)
+#     city = models.CharField(max_length=10)
+#     phonenumber = models.SmallIntegerField()
 
-    def __str__(self):
-        return f"{self.__class__.__name__} object for {self.user}"
+#     def __str__(self):
+#         return f"{self.__class__.__name__} object for {self.user}"
 
 
 # Create your models here.

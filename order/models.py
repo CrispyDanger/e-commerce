@@ -11,7 +11,7 @@ class Address(models.Model):
     )
     address = models.TextField(null=False)
     city = models.TextField(null=False)
-    email = models.EmailField(max_length=254)
+    cookie_email = models.EmailField(max_length=254)
 
     def __str__(self) -> str:
         return self.address + " , " + self.city
